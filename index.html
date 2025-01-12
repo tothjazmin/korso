@@ -69,7 +69,7 @@
     border-right: 10px solid transparent;
     width: 20px;
     position: absolute;
-    top: -2px; 
+    top: 5px; 
     left: 20px; 
     border-radius: 10px 10px 0 0;
     z-index: 3;
@@ -238,7 +238,7 @@
         
         function updateBeerHeight() {
             $('#beer').height((currentFill / 100) * mugHeight); 
-            $('#percent-filled').html('Percent Filled: ' + currentFill + '%');
+            $('#percent-filled').html('A feltöltött százalék eddig: ' + currentFill + '%');
 
             
             if (currentFill === game) {
