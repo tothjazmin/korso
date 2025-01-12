@@ -105,12 +105,12 @@
             height: 0px;
             z-index: 1;
             background: rgba(229,197,57,1);
-            transition: height 800ms ease; /* Transition time fixed here */
+            transition: height 800ms ease; 
         }
 
             #pour.pouring {
                 height: 230px;
-                transition: height 800ms ease; /* Transition time fixed here */
+                transition: height 800ms ease; 
             }
 
         #mug-container {
@@ -212,9 +212,9 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    <p class="helper tap">Hover over the tap to fill the mug</p>
-    <h1>Fill the mug <span id="target">0</span>%</h1>
-    <h2 id="percent-filled"></h2>
+    <p class="helper tap">Vidd az egeret a csap karjára hogy meg töltsd a korsót!</p>
+    <h1>Töltsd fel a korsót <span id="target">0</span>%</h1>
+    <h2 id="percent-filled">A feltöltött százalék jelenleg</h2>
     <h3 id="result"></h3>
     <div id="tap-container">
         <div id="tap"></div>
@@ -246,7 +246,7 @@
             } else if (Math.abs(game - currentFill) <= 5) {
                 $('#result').html('Majdnem.');
             } else {
-                $('#result').html('');
+                $('#result').html('Próbáld újra');
             }
         }
 
