@@ -5,16 +5,10 @@
     <title>Korsó</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
-        html {
-            font-size: 16px;
-        }
-
         body {
-            font-family: 'Roboto Condensed', sans-serif;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Germania One', Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
         }
 
         #tap-container {
@@ -61,18 +55,6 @@
             z-index: 3;
         }
 
-        #handle:before {
-            content: "";
-            display: block;
-            width: 30px;
-            height: 30px;
-            background: lightgrey;
-            position: absolute;
-            bottom: -20px;
-            left: -5px;
-            border-radius: 20px 20px 10px 10px;
-        }
-
         #handle:hover {
             transform: rotate(6deg);
             transform-origin: center bottom;
@@ -97,6 +79,8 @@
         #mug-container {
             position: absolute;
             top: 180px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         #mug {
@@ -133,50 +117,30 @@
             border: 25px solid #eee;
             border-left: none;
             border-radius: 0 50px 150px 0;
+            background-color: transparent; /* Fül színe */
         }
 
         #beer {
-            width: 100%; /* Teljes szélesség kitöltése */
-            height: 0%;
-            max-height: 100%;
+            width: 100%;
+            height: 0%; 
+            max-height: 200%;
             background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(237,237,173,1) 43%, rgba(229,197,57,1) 44%, rgba(229,197,57,1) 100%);
             position: absolute;
             bottom: 0;
         }
 
         h1 {
-            font-size: 3rem;
-            text-align: center;
-            line-height: 1em;
-            margin-bottom: 10px;
-            margin-top: 10px;
+            font-size: 2rem;
         }
 
         #percent-filled {
-            text-align: center;
-        }
-
-        #result {
-            text-align: center;
-        }
-
-        .helper.tap {
-            text-align: center;
-            margin-bottom: 0;
-        }
-
-        .helper.mug {
-            margin-left: 30px;
-            width: 180px;
-            text-align: center;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-    <p class="helper tap">Vidd az egeret a csap karjára hogy meg töltsd a korsót!</p>
-    <h1>Töltsd fel a korsót <span id="target">0</span>%</h1>
-    <h2 id="percent-filled">A feltöltött százalék jelenleg</h2>
-    <h3 id="result"></h3>
+    <h1>Korsó Töltő Játék</h1>
+    <h2 id="percent-filled">Jelenleg feltöltött: 0%</h2>
     <div id="tap-container">
         <div id="tap"></div>
         <div id="handle"></div>
@@ -187,35 +151,24 @@
         <div id="mug">
             <div id="beer"></div>
         </div>
-        <p class="helper mug">Kattints a korsó fülére, hogy újra indítsd a játékot!</p>
     </div>
 
     <script>
-        let game = Math.floor((Math.random() * 100) + 1);
+        let gameTarget = Math.floor((Math.random() * 100) + 1);
         let mugHeight = $('#mug').innerHeight();
-
-        let fillInterval;
         let currentFill = 0;
+        let fillInterval;
 
         function updateBeerHeight() {
-            $('#beer').height((currentFill / 100) * mugHeight);
-            $('#percent-filled').html('A feltöltött százalék eddig: ' + currentFill + '%');
-
-            if (currentFill === game) {
-                $('#result').html('Tökéletes!');
-            } else if (Math.abs(game - currentFill) <= 5) {
-                $('#result').html('Majdnem.');
-            } else {
-                $('#result').html('');
-            }
+            $('#beer').css('height', (currentFill / 100) * mugHeight + 'px');
+            $('#percent-filled').text('Jelenleg feltöltött: ' + currentFill + '%');
         }
 
         $('#handle').hover(
             function () {
                 fillInterval = setInterval(function () {
                     if (currentFill < 100) {
-                        currentFill += 1;
-                        if (currentFill > 100) currentFill = 100;
+                        currentFill++;
                         updateBeerHeight();
                     }
                 }, 50);
@@ -228,13 +181,9 @@
         $('#mug').click(function () {
             currentFill = 0;
             updateBeerHeight();
-            game = Math.floor((Math.random() * 100) + 1);
-            $('#target').html(game);
-            $('#result').html('');
         });
 
         $(document).ready(function () {
-            $('#target').html(game);
             updateBeerHeight();
         });
     </script>
