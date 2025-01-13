@@ -230,7 +230,7 @@
 
     <script>
         let game = Math.floor((Math.random() * 100) + 1); 
-       let mugHeight = $('#mug').innerHeight() - 40; 
+       let mugHeight = $('#mug').innerHeight() - 20; 
 
         let fillInterval; 
         let currentFill = 0; 
@@ -254,13 +254,15 @@
         $('#handle').hover(
             
                 function () {
-                    fillInterval = setInterval(function () {
-                        if (currentFill < 100) {
-                            currentFill += 1;
-                            updateBeerHeight();
-                        }
-                    }, 100);
-                },
+                    // Módosítás: A növekményt itt nagyobb értékre állítjuk (például 5)
+fillInterval = setInterval(function () {
+    if (currentFill < 100) {
+        currentFill += 5; // Növelés 5-tel
+        if (currentFill > 100) currentFill = 100; // Ellenőrizzük, hogy ne lépje túl a 100%-ot
+        updateBeerHeight();
+    }
+}, 100);
+                }
                 function () {
                     clearInterval(fillInterval);
                 }
