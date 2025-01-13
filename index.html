@@ -177,7 +177,7 @@
 
         #beer.fill {
             animation-name: beerFill;
-            animation-duration: 10s;
+            animation-duration: 2s;
             animation-fill-mode: forwards;
             background-position: 0% 70%;
         }
@@ -229,58 +229,58 @@
         <p class="helper mug">Kattints a korsó fülére, hogy újra indítsd a játékot!</p>
     </div>
 
-<script>
-    let game = Math.floor((Math.random() * 100) + 1); 
-    let mugHeight = $('#mug').height(); // Korsó magassága
-    let fillInterval; 
-    let currentFill = 0; 
+    <script>
+        let game = Math.floor((Math.random() * 100) + 1); 
+        let mugHeight = $('#mug').height(); 
+        let fillInterval; 
+        let currentFill = 0; 
 
-    function updateBeerHeight() {
-        // Korsó feltöltésének kiszámítása
-        $('#beer').height((currentFill / 100) * mugHeight); 
-        $('#percent-filled').html('A feltöltött százalék eddig: ' + currentFill + '%');
+        
+        function updateBeerHeight() {
+            $('#beer').height((currentFill / 100) * mugHeight); 
+            $('#percent-filled').html('A feltöltött százalék eddig: ' + currentFill + '%');
 
-        // Eredmény megjelenítése
-        if (currentFill === 100) {
-            $('#result').html('Tökéletes! A korsó teljesen tele van!');
-        } else if (Math.abs(game - currentFill) <= 5) {
-            $('#result').html('Majdnem sikerült.');
-        } else {
-            $('#result').html('');
+            
+            if (currentFill === game) {
+                $('#result').html('Tökéletes!');
+            } else if (Math.abs(game - currentFill) <= 5) {
+                $('#result').html('Majdnem.');
+            } else {
+                $('#result').html('');
+            }
         }
-    }
 
-    $('#handle').hover(
-        function () {
-            // Korsó feltöltése
-            fillInterval = setInterval(function () {
-                if (currentFill < 100) {
-                    currentFill += 1;
-                    updateBeerHeight();
+        
+        $('#handle').hover(
+            
+                function () {
+                    fillInterval = setInterval(function () {
+                        if (currentFill < 100) {
+                            currentFill += 1;
+                            updateBeerHeight();
+                        }
+                    }, 100);
+                },
+                function () {
+                    clearInterval(fillInterval);
                 }
-            }, 100);
-        },
-        function () {
-            clearInterval(fillInterval);
-        }
-    );
+            );
 
-    $('#mug').click(function () {
-        // Korsó újratöltése
-        currentFill = 0; 
-        updateBeerHeight();
-        game = Math.floor((Math.random() * 100) + 1); 
-        $('#target').html(game);
-        $('#result').html('');
-    });
+        
+        $('#mug').click(function () {
+            currentFill = 0; 
+            updateBeerHeight();
+            game = Math.floor((Math.random() * 100) + 1); 
+            $('#target').html(game);
+            $('#result').html('');
+        });
 
-    // Kezdőállapot beállítása
-    $(document).ready(function () {
-        $('#target').html(game); 
-        updateBeerHeight();
-    });
-</script>
-
+        // Kezdőállapot beállítása
+        $(document).ready(function () {
+            $('#target').html(game); 
+            updateBeerHeight();
+        });
+    </script>
 </body>
 </html>
 
