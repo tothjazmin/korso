@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
     <meta charset="utf-8" />
     <title>Korsó</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <style>
         html {
             font-size: 16px;
@@ -14,7 +16,7 @@
         }
 
         h1, h2, h3, h4 {
-            font-family: 'Germania One', Arial, sans-serif;
+            font-family: 'Germania One', Arial,sans-serif;
         }
 
         #tap-container {
@@ -33,62 +35,67 @@
             border-bottom-left-radius: 5px;
         }
 
-        #tap:after {
-            content: "";
-            display: block;
-            position: absolute;
-            border-top: 70px solid #ddd;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-radius: 0 0 40px 40px;
-            height: 0;
-            width: 20px;
-            top: 10px;
-            right: 10px;
-            transform: rotate(-20deg);
-            z-index: 2;
-        }
+            #tap:after {
+                content: "";
+                display: block;
+                position: absolute;
+                border-top: 70px solid #ddd;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-radius: 0 0 40px 40px;
+                height: 0;
+                width: 20px;
+                top: 10px;
+                right: 10px;
+                transform: rotate(-20deg);
+                z-index: 2;
+            }
 
-        #tap:before {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 70px;
-            height: 60px;
-            background: grey;
-            left: -20px;
-            top: -15px;
-            border-radius: 0px 20px 20px 0px;
-        }
+            #tap:before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 70px;
+                height: 60px;
+                background: grey;
+                left: -20px;
+                top: -15px;
+                border-radius: 0px 20px 20px 0px;
+            }
 
-        #handle {
-            border-top: 100px solid black;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            width: 20px;
-            position: absolute;
-            top: 5px;
-            left: 20px;
-            border-radius: 10px 10px 0 0;
-            z-index: 3;
-        }
+       #handle {
+    border-top: 100px solid black;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    width: 20px;
+    position: absolute;
+    top: 5px; 
+    left: 20px; 
+    border-radius: 10px 10px 0 0;
+    z-index: 3;
+}
 
-        #handle:before {
-            content: "";
-            display: block;
-            width: 30px;
-            height: 30px;
-            background: lightgrey;
-            position: absolute;
-            bottom: -20px;
-            left: -5px;
-            border-radius: 20px 20px 10px 10px;
-        }
+#handle:before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: lightgrey;
+    position: absolute;
+    bottom: -20px;
+    left: -5px;
+    border-radius: 20px 20px 10px 10px;
+}
 
-        #handle:hover {
-            transform: rotate(6deg);
-            transform-origin: center bottom;
-        }
+
+            #handle:hover {
+                transform: rotate(6deg);
+                transform-origin: center bottom;
+            }
+
+                #handle:hover:before {
+                    transform: rotate(0deg);
+                }
 
         #pour {
             position: absolute;
@@ -98,13 +105,13 @@
             height: 0px;
             z-index: 1;
             background: rgba(229,197,57,1);
-            transition: height 800ms ease;
+            transition: height 800ms ease; 
         }
 
-        #pour.pouring {
-            height: 230px;
-            transition: height 800ms ease;
-        }
+            #pour.pouring {
+                height: 230px;
+                transition: height 800ms ease; 
+            }
 
         #mug-container {
             position: absolute;
@@ -122,42 +129,44 @@
             position: relative;
         }
 
-        #mug:before {
-            position: absolute;
-            content: "";
-            display: block;
-            bottom: -40px;
-            height: 30px;
-            width: 180px;
-            left: -30px;
-            background: #eee;
-        }
+            #mug:before {
+                position: absolute;
+                content: "";
+                display: block;
+                bottom: -40px;
+                height: 30px;
+                width: 180px;
+                left: -30px;
+                background: #eee;
+            }
 
-        #mug:after {
-            position: absolute;
-            content: "";
-            display: block;
-            right: -80px;
-            top: 30px;
-            width: 40px;
-            height: 110px;
-            border: 25px solid #eee;
-            border-left: none;
-            border-radius: 0 50px 150px 0;
-        }
+            #mug:after {
+                position: absolute;
+                content: "";
+                display: block;
+                right: -80px;
+                top: 30px;
+                width: 40px;
+                height: 110px;
+                border: 25px solid #eee;
+                border-left: none;
+                border-radius: 0 50px 150px 0;
+            }
 
         #beer {
             width: 100%;
             height: 0%;
             max-height: 100%;
-            background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(237,237,173,1) 43%, rgba(229,197,57,1) 44%, rgba(229,197,57,1) 100%);
+            background: linear-gradient( rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(237,237,173,1) 43%, rgba(229,197,57,1) 44%, rgba(229,197,57,1) 100% );
+            background-repeat: repeat;
+            background-size: 100% 200%;
             position: absolute;
             bottom: 0;
             left: 0;
         }
 
         @keyframes beerFill {
-            0% {
+            5% {
                 height: 0%;
             }
 
@@ -166,10 +175,19 @@
             }
         }
 
+        #beer.fill {
+            animation-name: beerFill;
+            animation-duration: 10s;
+            animation-fill-mode: forwards;
+            background-position: 0% 70%;
+        }
+
         h1 {
             font-size: 3rem;
             text-align: center;
+            line-height: 1em;
             margin-bottom: 10px;
+            margin-top: 10px;
         }
 
         #percent-filled {
@@ -179,14 +197,25 @@
         #result {
             text-align: center;
         }
+
+        .helper.tap {
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .helper.mug {
+            margin-left: 30px;
+            width: 180px;
+            text-align: center;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    <p class="helper tap">Vidd az egeret a csap karjára, hogy megtöltsd a korsót!</p>
+    <p class="helper tap">Vidd az egeret a csap karjára hogy meg töltsd a korsót!</p>
     <h1>Töltsd fel a korsót <span id="target">0</span>%</h1>
-    <h2 id="percent-filled">A feltöltött százalék jelenleg:</h2>
+    <h2 id="percent-filled">A feltöltött százalék jelenleg</h2>
     <h3 id="result"></h3>
-
     <div id="tap-container">
         <div id="tap"></div>
         <div id="handle"></div>
@@ -197,53 +226,61 @@
         <div id="mug">
             <div id="beer"></div>
         </div>
+        <p class="helper mug">Kattints a korsó fülére, hogy újra indítsd a játékot!</p>
     </div>
 
-    <script>
-        let game = Math.floor((Math.random() * 100) + 1);
-        let mugHeight = $('#mug').height();
-        let fillInterval;
-        let currentFill = 0;
+<script>
+    let game = Math.floor((Math.random() * 100) + 1); 
+    let mugHeight = $('#mug').height(); // Korsó magassága
+    let fillInterval; 
+    let currentFill = 0; 
 
-        function updateBeerHeight() {
-            $('#beer').height((currentFill / 100) * mugHeight);
-            $('#percent-filled').html('A feltöltött százalék eddig: ' + currentFill + '%');
+    function updateBeerHeight() {
+        // Korsó feltöltésének kiszámítása
+        $('#beer').height((currentFill / 100) * mugHeight); 
+        $('#percent-filled').html('A feltöltött százalék eddig: ' + currentFill + '%');
 
-            if (currentFill === 100) {
-                $('#result').html('Tökéletes! A korsó tele van!');
-            } else if (Math.abs(game - currentFill) <= 5) {
-                $('#result').html('Majdnem sikerült.');
-            } else {
-                $('#result').html('');
-            }
-        }
-
-        $('#handle').hover(
-            function () {
-                fillInterval = setInterval(function () {
-                    if (currentFill < 100) {
-                        currentFill += 1;
-                        updateBeerHeight();
-                    }
-                }, 100);
-            },
-            function () {
-                clearInterval(fillInterval);
-            }
-        );
-
-        $('#mug').click(function () {
-            currentFill = 0;
-            updateBeerHeight();
-            game = Math.floor((Math.random() * 100) + 1);
-            $('#target').html(game);
+        // Eredmény megjelenítése
+        if (currentFill === 100) {
+            $('#result').html('Tökéletes! A korsó teljesen tele van!');
+        } else if (Math.abs(game - currentFill) <= 5) {
+            $('#result').html('Majdnem sikerült.');
+        } else {
             $('#result').html('');
-        });
+        }
+    }
 
-        $(document).ready(function () {
-            $('#target').html(game);
-            updateBeerHeight();
-        });
-    </script>
+    $('#handle').hover(
+        function () {
+            // Korsó feltöltése
+            fillInterval = setInterval(function () {
+                if (currentFill < 100) {
+                    currentFill += 1;
+                    updateBeerHeight();
+                }
+            }, 100);
+        },
+        function () {
+            clearInterval(fillInterval);
+        }
+    );
+
+    $('#mug').click(function () {
+        // Korsó újratöltése
+        currentFill = 0; 
+        updateBeerHeight();
+        game = Math.floor((Math.random() * 100) + 1); 
+        $('#target').html(game);
+        $('#result').html('');
+    });
+
+    // Kezdőállapot beállítása
+    $(document).ready(function () {
+        $('#target').html(game); 
+        updateBeerHeight();
+    });
+</script>
+
 </body>
 </html>
+
