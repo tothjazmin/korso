@@ -118,17 +118,86 @@
             top: 180px;
         }
 
-        #mug {
-            margin: 60px 0 0 40px;
-            border: 20px solid #eee;
-            border-bottom-width: 30px;
-            width: 120px;
-            height: 200px;
-            border-top: none;
-            border-radius: 0 0 10px 10px;
-            position: relative;
+         body {
+            background-color: #f5f9fd; /* Light blue background */
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff; /* White container with a shadow */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .game-info p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .mug-container {
+            text-align: center;
+        }
+
+        #mug {
+            width: 150px;
+            height: 250px;
+            margin: 0 auto;
+            border: 10px solid #ddd;
+            border-bottom-width: 15px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            position: relative;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAGCAYAAAC5iX2HAAAACXBIWXMAAAsTAAALEwEAmpwAAAABGdBTUEAALGPC+tsAAAACX๊敗๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗๊败๊败๊败๊敗"); /* Replace with your beer mug image */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        #beer {
+            width: 100%;
+            height: 0%;
+            max-height: 300%;
+            background: linear-gradient(rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 35%, rgba(237, 237, 173, 1) 43%, rgba(229, 197, 57, 1) 44%, rgba(229, 197, 57, 1) 100%);
+            background-repeat: repeat;
+            background-size: 100% 200%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        @keyframes beerFill {
+            5% {
+                height: 0%;
+            }
+
+            100% {
+                height: 100%;
+            }
+        }
+
+        #beer.fill {
+            animation-name: beerFill;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            background-position: 0% 70%;
+        }
         #mug:before {
             position: absolute;
             content: "";
